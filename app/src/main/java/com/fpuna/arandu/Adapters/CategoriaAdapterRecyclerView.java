@@ -26,6 +26,7 @@ public class CategoriaAdapterRecyclerView extends RecyclerView.Adapter<Categoria
     private ArrayList<Categoria> categorias;
     private int resource; //recurso o cardview layout
     private Activity activity;
+    public static Categoria categoria;
 
     public CategoriaAdapterRecyclerView(ArrayList<Categoria> categorias, int resource, Activity activity) {
         this.categorias = categorias;
@@ -41,10 +42,10 @@ public class CategoriaAdapterRecyclerView extends RecyclerView.Adapter<Categoria
     }
 
 
-    public void onBindViewHolder(@NonNull CategoriaViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CategoriaViewHolder holder, final int position) {
         //aca se trabaja con la lista de elementos, asignamos los datos al cardview
 
-        Categoria categoria = categorias.get(position);
+        categoria = categorias.get(position);
         //Picasso.with(activity.getApplicationContext()).load(categoria.getImagen()).into(holder.imagenCategoria);
         holder.labelCategoriaGuarani.setText(categoria.getNombreGuarani());
         holder.labelCategoriaCastellano.setText(categoria.getNombreCastellano());
@@ -73,6 +74,18 @@ public class CategoriaAdapterRecyclerView extends RecyclerView.Adapter<Categoria
         }
 
         Picasso.with(activity.getApplicationContext()).load(resourceImage).into(holder.imagenCategoria);
+
+        holder.imagenCategoria.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+
+                categoria = categorias.get(position);
+                Intent intent = new Intent(activity, CuentosActivity.class);
+                activity.startActivity(intent);
+            }
+        });
+
+
     }
 
 
@@ -91,23 +104,15 @@ public class CategoriaAdapterRecyclerView extends RecyclerView.Adapter<Categoria
         public CategoriaViewHolder(View itemView) {
             super(itemView);
 
+
             imagenCategoria = (ImageView) itemView.findViewById(R.id.imagen_categoria);
             labelCategoriaGuarani = (AutofitTextView) itemView.findViewById(R.id.label_categoria_guarani);
             labelCategoriaCastellano = (AutofitTextView) itemView.findViewById(R.id.label_categoria_castellano);
 
-            imagenCategoria.setOnClickListener(new View.OnClickListener() {
-
-                public void onClick(View v) {
-                    Snackbar.make(v, "Llama a otra actividad", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                    //Intent intent = new Intent(activity, CuentosActivity.class);
-                    //activity.startActivity(intent);
-                }
-            });
-
             labelCategoriaGuarani.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     Toast.makeText(activity.getApplicationContext(), labelCategoriaGuarani.getText().toString(),
                             Toast.LENGTH_LONG).show();
                 }

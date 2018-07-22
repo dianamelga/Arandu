@@ -44,6 +44,7 @@ public class CategoriaModel implements ICategoria.Model {
     }
 
     private void cargaDatosDePrueba(){
+        String urlAudio = ""; //aca pone un link de audio para hacer tus pruebas
         this.categorias = new ArrayList<>();
         Categoria categoria = new Categoria();
         categoria.setId(1);
@@ -78,6 +79,7 @@ public class CategoriaModel implements ICategoria.Model {
         cuento.setNombre("Silla de rueda pyahu");
         cuento.setAutor("Alcibiades Britez");
         cuento.setAudio("");
+        cuentos.add(cuento);
 
         cuento = new Cuento();
         cuento.setId(2);
@@ -85,15 +87,16 @@ public class CategoriaModel implements ICategoria.Model {
         cuento.setNombre("España-pe jeho");
         cuento.setAutor("Alcibiades Britez");
         cuento.setAudio("");
+        cuentos.add(cuento);
 
         cuento = new Cuento();
         cuento.setId(3);
         cuento.setIdCategoria(2);
         cuento.setNombre("Ykua Bolaños");
         cuento.setAutor("Alcibiades Britez");
-        cuento.setAudio("");
-
+        cuento.setAudio(urlAudio);
         cuentos.add(cuento);
+
         categoria.setCuentos(cuentos);
         this.categorias.add(categoria);
 
@@ -110,6 +113,7 @@ public class CategoriaModel implements ICategoria.Model {
         cuento.setNombre("Ao ao rehegua");
         cuento.setAutor("Domingo Adolfo Aguilera Gimenez");
         cuento.setAudio("");
+        cuentos.add(cuento);
 
         cuento = new Cuento();
         cuento.setId(2);
@@ -117,6 +121,7 @@ public class CategoriaModel implements ICategoria.Model {
         cuento.setNombre("Ka'a Jaryi rehegua");
         cuento.setAutor("Domingo Adolfo Aguilera Gimenez");
         cuento.setAudio("");
+        cuentos.add(cuento);
 
         cuento = new Cuento();
         cuento.setId(3);
@@ -124,6 +129,7 @@ public class CategoriaModel implements ICategoria.Model {
         cuento.setNombre("Kurupi rehegua");
         cuento.setAutor("Domingo Adolfo Aguilera Gimenez");
         cuento.setAudio("");
+        cuentos.add(cuento);
 
         cuento = new Cuento();
         cuento.setId(4);
@@ -131,6 +137,7 @@ public class CategoriaModel implements ICategoria.Model {
         cuento.setNombre("Luiso rehegua");
         cuento.setAutor("Domingo Adolfo Aguilera Gimenez");
         cuento.setAudio("");
+        cuentos.add(cuento);
 
         cuento = new Cuento();
         cuento.setId(5);
@@ -138,6 +145,7 @@ public class CategoriaModel implements ICategoria.Model {
         cuento.setNombre("Pombero rehegua");
         cuento.setAutor("Domingo Adolfo Aguilera Gimenez");
         cuento.setAudio("");
+        cuentos.add(cuento);
 
         cuento = new Cuento();
         cuento.setId(6);
@@ -145,6 +153,7 @@ public class CategoriaModel implements ICategoria.Model {
         cuento.setNombre("Pora rehegua");
         cuento.setAutor("Domingo Adolfo Aguilera Gimenez");
         cuento.setAudio("");
+        cuentos.add(cuento);
 
         cuento = new Cuento();
         cuento.setId(7);
@@ -152,6 +161,7 @@ public class CategoriaModel implements ICategoria.Model {
         cuento.setNombre("Jasy jatere rehegua");
         cuento.setAutor("Domingo Adolfo Aguilera Gimenez");
         cuento.setAudio("");
+        cuentos.add(cuento);
 
         cuento = new Cuento();
         cuento.setId(8);
@@ -159,8 +169,8 @@ public class CategoriaModel implements ICategoria.Model {
         cuento.setNombre("Bruja rehegua");
         cuento.setAutor("Domingo Adolfo Aguilera Gimenez");
         cuento.setAudio("");
-
         cuentos.add(cuento);
+
         categoria.setCuentos(cuentos);
         this.categorias.add(categoria);
 
@@ -328,14 +338,6 @@ public class CategoriaModel implements ICategoria.Model {
         categoria.setNombreGuarani("Kaso ha mongaru");
 
         cuentos = new ArrayList<>();
-        cuento = new Cuento();
-        cuento.setId(1);
-        cuento.setIdCategoria(6);
-        cuento.setNombre("Ka'i veve");
-        cuento.setAutor("Feliciano Acosta");
-        cuento.setAudio("");
-        cuentos.add(cuento);
-
         cuento = new Cuento();
         cuento.setId(1);
         cuento.setIdCategoria(6);

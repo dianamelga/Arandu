@@ -1,9 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Views.CuentosActivity">
+    android:fitsSystemWindows="true"
+    tools:context="com.fpuna.arandu.Views.CuentosActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <include layout="@layout/action_toolbar"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin">
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/cuento_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+        </LinearLayout>
+
+
+
+        <include layout="@layout/reproductor_audio"
+            android:id="@+id/reproductor_audio"
+            android:layout_gravity="bottom"
+            android:layout_height="60dp"
+            android:layout_width="match_parent"
+            android:visibility="gone"/>
+    </FrameLayout>
+
+</android.support.design.widget.CoordinatorLayout>

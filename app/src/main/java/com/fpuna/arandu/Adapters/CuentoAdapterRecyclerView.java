@@ -12,6 +12,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.fpuna.arandu.Clases.Cuento;
+import com.fpuna.arandu.Interfaces.ICuento;
+import com.fpuna.arandu.Presenters.CuentoPresenter;
 import com.fpuna.arandu.R;
 
 import java.util.ArrayList;
@@ -21,12 +23,15 @@ public class CuentoAdapterRecyclerView extends RecyclerView.Adapter<CuentoAdapte
     private ArrayList<Cuento> cuentos;
     private int resource;
     private Activity activity;
+    private ICuento.Presenter presenter;
+    private Cuento cuento;
 
 
-    public CuentoAdapterRecyclerView(ArrayList<Cuento> cuentos, int resource, Activity activity) {
+    public CuentoAdapterRecyclerView(ArrayList<Cuento> cuentos, int resource, Activity activity, ICuento.Presenter presenter) {
         this.cuentos = cuentos;
         this.resource = resource;
         this.activity = activity;
+        this.presenter = presenter;
     }
 
     @NonNull
@@ -37,13 +42,31 @@ public class CuentoAdapterRecyclerView extends RecyclerView.Adapter<CuentoAdapte
     }
 
 
-    public void onBindViewHolder(@NonNull CuentoViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CuentoViewHolder holder, final int position) {
 
         //aca se trabaja con la lista de elementos, asignamos los datos al cardview
-        Cuento cuento = cuentos.get(position);
+        cuento = cuentos.get(position);
         holder.nombreCuento.setText(cuento.getNombre());
         holder.autorCuento.setText(cuento.getAutor());
-        holder.urlAudio = cuento.getAudio();
+
+        holder.cuento.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+
+                cuento = cuentos.get(position);
+                presenter.showReproductor(cuento);
+
+            }
+        });
+
+        holder.botonDownload.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                //descarga de audio
+                cuento = cuentos.get(position);
+                presenter.descargarAudio(cuento.getAudio());
+            }
+        });
 
     }
 
@@ -58,7 +81,6 @@ public class CuentoAdapterRecyclerView extends RecyclerView.Adapter<CuentoAdapte
         private TextView nombreCuento;
         private TextView autorCuento;
         private ImageButton botonDownload;
-        private String urlAudio;
 
         public CuentoViewHolder(final View itemView) {
             super(itemView);
@@ -68,22 +90,7 @@ public class CuentoAdapterRecyclerView extends RecyclerView.Adapter<CuentoAdapte
             autorCuento = (TextView) itemView.findViewById(R.id.nombre_autor);
             botonDownload = (ImageButton) itemView.findViewById(R.id.boton_download_cuento);
 
-            cuento.setOnClickListener(new View.OnClickListener() {
 
-                public void onClick(View v) {
-                    //reproducir musica
-
-                }
-            });
-
-            botonDownload.setOnClickListener(new View.OnClickListener() {
-
-                public void onClick(View v) {
-                    //descarga de audio
-                    Snackbar.make(v, "Descargando audio...", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                }
-            });
 
 
         }
