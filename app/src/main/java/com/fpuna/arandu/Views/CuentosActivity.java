@@ -39,8 +39,8 @@ public class CuentosActivity extends AppCompatActivity implements ICuento.View{
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                hidePlay();
-                showPause();
+                presenter.playAudio(CuentoAdapterRecyclerView.cuento.getAudio());
+
             }
         });
 
@@ -48,8 +48,7 @@ public class CuentosActivity extends AppCompatActivity implements ICuento.View{
         pause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showPlay();
-                hidePause();
+                presenter.pauseAudio();
             }
         });
 

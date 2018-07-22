@@ -10,7 +10,6 @@ import java.util.ArrayList;
 public class CuentoModel implements ICuento.Model {
     private int codResultado;
     private String resultado;
-    private ArrayList<Cuento> cuentos;
     private Context context;
 
     @Override
@@ -41,10 +40,6 @@ public class CuentoModel implements ICuento.Model {
         //pausa el audio que se esta reproduciendo
     }
 
-    @Override
-    public ArrayList<Cuento> getCuentos() {
-        return this.cuentos;
-    }
 
     @Override
     public void setContext(Context context) {

@@ -24,7 +24,7 @@ public class CuentoAdapterRecyclerView extends RecyclerView.Adapter<CuentoAdapte
     private int resource;
     private Activity activity;
     private ICuento.Presenter presenter;
-    private Cuento cuento;
+    public static Cuento cuento;
 
 
     public CuentoAdapterRecyclerView(ArrayList<Cuento> cuentos, int resource, Activity activity, ICuento.Presenter presenter) {

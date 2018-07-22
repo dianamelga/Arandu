@@ -43,6 +43,7 @@ public class CuentoPresenter implements ICuento.Presenter {
 
         model.playAudio(urlAudio);
         view.showPause();
+        view.hidePlay();
     }
 
     @Override
@@ -50,6 +51,7 @@ public class CuentoPresenter implements ICuento.Presenter {
 
         model.pauseAudio();
         view.showPlay();
+        view.hidePause();
 
     }
 

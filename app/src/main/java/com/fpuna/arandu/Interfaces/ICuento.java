@@ -14,7 +14,7 @@ public interface ICuento {
         public void playAudio(String urlAudio);
         public void pauseAudio();
 
-        public ArrayList<Cuento> getCuentos();
+
 
     }
 
