@@ -1,5 +1,6 @@
 package com.fpuna.arandu.Views;
 
+import android.app.SearchManager;
 import android.content.Context;
 import android.media.Image;
 import android.support.design.widget.Snackbar;
@@ -7,8 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.text.Layout;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -18,6 +23,7 @@ import com.fpuna.arandu.Adapters.CategoriaAdapterRecyclerView;
 import com.fpuna.arandu.Adapters.CuentoAdapterRecyclerView;
 import com.fpuna.arandu.Clases.Cuento;
 import com.fpuna.arandu.Interfaces.ICuento;
+import com.fpuna.arandu.MainActivity;
 import com.fpuna.arandu.Presenters.CuentoPresenter;
 import com.fpuna.arandu.R;
 
@@ -29,6 +35,7 @@ public class CuentosActivity extends AppCompatActivity implements ICuento.View{
     View reproductor;
     ImageButton play;
     ImageButton pause;
+    SearchView mSearchView;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -133,6 +140,40 @@ public class CuentosActivity extends AppCompatActivity implements ICuento.View{
         getSupportActionBar().setTitle(title);
         /* en caso de que tenga boton de regreso hacemos que sea visible*/
         getSupportActionBar().setDisplayHomeAsUpEnabled(upButton);
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.search_toolbar, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+
+        SearchManager searchManager = (SearchManager) CuentosActivity.this.getSystemService(Context.SEARCH_SERVICE);
+        mSearchView = (SearchView) searchItem.getActionView();
+
+
+        if (mSearchView != null) {
+            mSearchView.setSearchableInfo(searchManager.getSearchableInfo(CuentosActivity.this.getComponentName()));
+
+            SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener()
+            {
+                public boolean onQueryTextChange(String newText)
+                {
+                    //filtrar las categorias
+                    return true;
+                }
+
+                public boolean onQueryTextSubmit(String query)
+                {
+                    return true;
+                }
+            };
+
+            mSearchView.setOnQueryTextListener(queryTextListener);
+        }
+        return super.onCreateOptionsMenu(menu);
 
     }
 }
