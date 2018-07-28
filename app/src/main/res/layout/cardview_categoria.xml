@@ -37,7 +37,7 @@
                 android:layout_gravity="center"
                 android:textStyle="bold"
                 android:textColor="@color/colorAccent"
-                android:text="Mombe'u yma"
+                android:text="@string/titulo_1"
                 android:maxLines="1"
                 android:singleLine="true"
                 cardview:minTextSize="14sp"

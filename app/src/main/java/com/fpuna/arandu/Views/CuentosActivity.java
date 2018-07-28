@@ -25,10 +25,10 @@ import java.util.ArrayList;
 
 public class CuentosActivity extends AppCompatActivity implements ICuento.View{
 
-    ICuento.Presenter presenter;
-    View reproductor;
-    ImageButton play;
-    ImageButton pause;
+    public ICuento.Presenter presenter;
+    public View reproductor;
+    public ImageButton play;
+    public ImageButton pause;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +39,7 @@ public class CuentosActivity extends AppCompatActivity implements ICuento.View{
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.playAudio(CuentoAdapterRecyclerView.cuento.getAudio());
+                presenter.playAudio("");
 
             }
         });

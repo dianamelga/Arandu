@@ -17,7 +17,7 @@ import com.fpuna.arandu.Presenters.CategoriaPresenter;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements ICategoria.View {
-    ICategoria.Presenter presenter;
+    public ICategoria.Presenter presenter;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

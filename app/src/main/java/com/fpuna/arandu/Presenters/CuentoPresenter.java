@@ -9,9 +9,9 @@ import com.fpuna.arandu.Interfaces.ICuento;
 import com.fpuna.arandu.Models.CuentoModel;
 
 public class CuentoPresenter implements ICuento.Presenter {
-    ICuento.Model model;
-    ICuento.View view;
-    Categoria categoria;
+    public ICuento.Model model;
+    public ICuento.View view;
+    public Categoria categoria;
 
     public CuentoPresenter(ICuento.View view, Categoria categoria) {
         this.view = view;
