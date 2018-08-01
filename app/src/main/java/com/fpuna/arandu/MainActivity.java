@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements ICategoria.View {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        showToolbar("Arandu App", false);
+        showToolbar("Aranduka", false);
         presenter = new CategoriaPresenter(this);
         presenter.consultar();
 

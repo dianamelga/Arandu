@@ -2,7 +2,6 @@ package com.fpuna.arandu.Adapters;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,24 +10,23 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.fpuna.arandu.Clases.Cuento;
+import com.fpuna.arandu.Clases.Audio;
 import com.fpuna.arandu.Interfaces.ICuento;
-import com.fpuna.arandu.Presenters.CuentoPresenter;
 import com.fpuna.arandu.R;
 
 import java.util.ArrayList;
 
 public class CuentoAdapterRecyclerView extends RecyclerView.Adapter<CuentoAdapterRecyclerView.CuentoViewHolder> {
 
-    private ArrayList<Cuento> cuentos;
+    private ArrayList<Audio> audios;
     private int resource;
     private Activity activity;
     private ICuento.Presenter presenter;
-    public static Cuento cuento;
+    public static Audio audio;
 
 
-    public CuentoAdapterRecyclerView(ArrayList<Cuento> cuentos, int resource, Activity activity, ICuento.Presenter presenter) {
-        this.cuentos = cuentos;
+    public CuentoAdapterRecyclerView(ArrayList<Audio> audios, int resource, Activity activity, ICuento.Presenter presenter) {
+        this.audios = audios;
         this.resource = resource;
         this.activity = activity;
         this.presenter = presenter;
@@ -45,16 +43,16 @@ public class CuentoAdapterRecyclerView extends RecyclerView.Adapter<CuentoAdapte
     public void onBindViewHolder(@NonNull CuentoViewHolder holder, final int position) {
 
         //aca se trabaja con la lista de elementos, asignamos los datos al cardview
-        cuento = cuentos.get(position);
-        holder.nombreCuento.setText(cuento.getNombre());
-        holder.autorCuento.setText(cuento.getAutor());
+        audio = audios.get(position);
+        holder.nombreCuento.setText(audio.getNombre());
+        holder.autorCuento.setText(audio.getAutor());
 
         holder.cuento.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
 
-                cuento = cuentos.get(position);
-                presenter.showReproductor(cuento);
+                audio = audios.get(position);
+                presenter.showReproductor(audio);
 
             }
         });
@@ -63,8 +61,8 @@ public class CuentoAdapterRecyclerView extends RecyclerView.Adapter<CuentoAdapte
 
             public void onClick(View v) {
                 //descarga de audio
-                cuento = cuentos.get(position);
-                presenter.descargarAudio(cuento.getAudio());
+                audio = audios.get(position);
+                presenter.descargarAudio(audio.getUrlAudio());
             }
         });
 
@@ -72,7 +70,7 @@ public class CuentoAdapterRecyclerView extends RecyclerView.Adapter<CuentoAdapte
 
 
     public int getItemCount() {
-        return cuentos.size();
+        return audios.size();
     }
 
     public class CuentoViewHolder extends RecyclerView.ViewHolder {
@@ -85,7 +83,7 @@ public class CuentoAdapterRecyclerView extends RecyclerView.Adapter<CuentoAdapte
         public CuentoViewHolder(final View itemView) {
             super(itemView);
 
-            cuento = (LinearLayout) itemView.findViewById(R.id.cuento);
+            cuento = (LinearLayout) itemView.findViewById(R.id.audio);
             nombreCuento = (TextView) itemView.findViewById(R.id.nombre_cuento);
             autorCuento = (TextView) itemView.findViewById(R.id.nombre_autor);
             botonDownload = (ImageButton) itemView.findViewById(R.id.boton_download_cuento);

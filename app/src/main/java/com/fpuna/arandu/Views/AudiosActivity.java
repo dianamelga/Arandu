@@ -2,7 +2,6 @@ package com.fpuna.arandu.Views;
 
 import android.app.SearchManager;
 import android.content.Context;
-import android.media.Image;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,7 +9,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.text.Layout;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,15 +19,14 @@ import android.widget.Toast;
 
 import com.fpuna.arandu.Adapters.CategoriaAdapterRecyclerView;
 import com.fpuna.arandu.Adapters.CuentoAdapterRecyclerView;
-import com.fpuna.arandu.Clases.Cuento;
+import com.fpuna.arandu.Clases.Audio;
 import com.fpuna.arandu.Interfaces.ICuento;
-import com.fpuna.arandu.MainActivity;
-import com.fpuna.arandu.Presenters.CuentoPresenter;
+import com.fpuna.arandu.Presenters.AudioPresenter;
 import com.fpuna.arandu.R;
 
 import java.util.ArrayList;
 
-public class CuentosActivity extends AppCompatActivity implements ICuento.View{
+public class AudiosActivity extends AppCompatActivity implements ICuento.View{
 
     ICuento.Presenter presenter;
     View reproductor;
@@ -39,14 +36,14 @@ public class CuentosActivity extends AppCompatActivity implements ICuento.View{
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cuentos);
+        setContentView(R.layout.activity_audios);
         reproductor = (View) findViewById(R.id.reproductor_audio);
 
         play = reproductor.findViewById(R.id.button_play);
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.playAudio(CuentoAdapterRecyclerView.cuento.getAudio());
+                presenter.playAudio(CuentoAdapterRecyclerView.audio.getUrlAudio());
 
             }
         });
@@ -60,7 +57,7 @@ public class CuentosActivity extends AppCompatActivity implements ICuento.View{
         });
 
         showToolbar(CategoriaAdapterRecyclerView.categoria.getNombreCastellano(), true);
-        presenter = new CuentoPresenter(this, CategoriaAdapterRecyclerView.categoria);
+        presenter = new AudioPresenter(this, CategoriaAdapterRecyclerView.categoria);
         presenter.loadView();
     }
 
@@ -78,11 +75,11 @@ public class CuentosActivity extends AppCompatActivity implements ICuento.View{
     }
 
     @Override
-    public void showReproductor(Cuento cuento) {
+    public void showReproductor(Audio audio) {
 
         reproductor.setVisibility(View.VISIBLE);
         TextView nombreCuentoAudio = reproductor.findViewById(R.id.nombre_cuento_audio);
-        nombreCuentoAudio.setText(cuento.getNombre() + " - "+cuento.getAutor());
+        nombreCuentoAudio.setText(audio.getNombre() + " - "+ audio.getAutor());
 
 
     }
@@ -113,7 +110,7 @@ public class CuentosActivity extends AppCompatActivity implements ICuento.View{
 
 
     @Override
-    public void cargarAdapter(ArrayList<Cuento> cuentos) {
+    public void cargarAdapter(ArrayList<Audio> audios) {
 
         RecyclerView cuentoRecycler = findViewById(R.id.cuento_recycler);
 
@@ -123,7 +120,7 @@ public class CuentosActivity extends AppCompatActivity implements ICuento.View{
         cuentoRecycler.setLayoutManager(linearLayoutManager);
 
         CuentoAdapterRecyclerView cuentoAdapterRecyclerView = new CuentoAdapterRecyclerView(
-                cuentos, R.layout.cardview_cuento, this, this.presenter);
+                audios, R.layout.cardview_cuento, this, this.presenter);
 
         cuentoRecycler.setAdapter(cuentoAdapterRecyclerView);
     }
@@ -150,12 +147,12 @@ public class CuentosActivity extends AppCompatActivity implements ICuento.View{
 
         MenuItem searchItem = menu.findItem(R.id.action_search);
 
-        SearchManager searchManager = (SearchManager) CuentosActivity.this.getSystemService(Context.SEARCH_SERVICE);
+        SearchManager searchManager = (SearchManager) AudiosActivity.this.getSystemService(Context.SEARCH_SERVICE);
         mSearchView = (SearchView) searchItem.getActionView();
 
 
         if (mSearchView != null) {
-            mSearchView.setSearchableInfo(searchManager.getSearchableInfo(CuentosActivity.this.getComponentName()));
+            mSearchView.setSearchableInfo(searchManager.getSearchableInfo(AudiosActivity.this.getComponentName()));
 
             SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener()
             {

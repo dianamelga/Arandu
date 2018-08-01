@@ -9,7 +9,7 @@ public class Categoria {
     private String imagen; //preparamos para que reciba una url
     private String nombreGuarani;
     private String nombreCastellano;
-    private ArrayList<Cuento> cuentos;
+    private ArrayList<Audio> audios;
 
 
 
@@ -29,8 +29,8 @@ public class Categoria {
         this.nombreCastellano = nombreCastellano;
     }
 
-    public void setCuentos(ArrayList<Cuento> cuentos) {
-        this.cuentos = cuentos;
+    public void setAudios(ArrayList<Audio> audios) {
+        this.audios = audios;
     }
 
     public Integer getId() {
@@ -53,8 +53,8 @@ public class Categoria {
     }
 
 
-    public ArrayList<Cuento> getCuentos() {
-        return this.cuentos;
+    public ArrayList<Audio> getAudios() {
+        return this.audios;
     }
 
 

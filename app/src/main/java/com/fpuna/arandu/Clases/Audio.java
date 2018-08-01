@@ -1,11 +1,11 @@
 package com.fpuna.arandu.Clases;
 
-public class Cuento {
+public class Audio {
 
     private Integer id;
     private String nombre;
     private String autor;
-    private String audio; //url del audio
+    private String urlAudio; //url del audio
     private Integer idCategoria;
 
 
@@ -33,12 +33,12 @@ public class Cuento {
         this.autor = autor;
     }
 
-    public String getAudio() {
-        return audio;
+    public String getUrlAudio() {
+        return urlAudio;
     }
 
-    public void setAudio(String audio) {
-        this.audio = audio;
+    public void setUrlAudio(String urlAudio) {
+        this.urlAudio = urlAudio;
     }
 
     public Integer getIdCategoria() {

@@ -2,12 +2,9 @@ package com.fpuna.arandu.Models;
 
 import android.content.Context;
 
-import com.fpuna.arandu.Clases.Cuento;
 import com.fpuna.arandu.Interfaces.ICuento;
 
-import java.util.ArrayList;
-
-public class CuentoModel implements ICuento.Model {
+public class AudioModel implements ICuento.Model {
     private int codResultado;
     private String resultado;
     private Context context;

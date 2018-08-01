@@ -4,30 +4,30 @@ import android.os.AsyncTask;
 
 import com.fpuna.arandu.Clases.Categoria;
 import com.fpuna.arandu.Clases.Constante;
-import com.fpuna.arandu.Clases.Cuento;
+import com.fpuna.arandu.Clases.Audio;
 import com.fpuna.arandu.Interfaces.ICuento;
-import com.fpuna.arandu.Models.CuentoModel;
+import com.fpuna.arandu.Models.AudioModel;
 
-public class CuentoPresenter implements ICuento.Presenter {
+public class AudioPresenter implements ICuento.Presenter {
     ICuento.Model model;
     ICuento.View view;
     Categoria categoria;
 
-    public CuentoPresenter(ICuento.View view, Categoria categoria) {
+    public AudioPresenter(ICuento.View view, Categoria categoria) {
         this.view = view;
-        this.model = new CuentoModel();
+        this.model = new AudioModel();
         this.categoria = categoria;
     }
 
     @Override
     public void loadView() {
         this.model.setContext(view.getContext());
-        this.view.cargarAdapter(categoria.getCuentos());
+        this.view.cargarAdapter(categoria.getAudios());
     }
 
     @Override
-    public void showReproductor(Cuento cuento) {
-        this.view.showReproductor(cuento);
+    public void showReproductor(Audio audio) {
+        this.view.showReproductor(audio);
     }
 
 
