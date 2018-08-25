@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">Arandu</string>
-    <string name="titulo_1">Mombe'u yma</string>
+    <string name="app_name">Aranduka</string>
+    <string name="search_hint">Buscar</string>
+    <string name="titulo_1">Titulo</string>
 </resources>
