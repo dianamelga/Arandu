@@ -20,15 +20,15 @@ import android.widget.Toast;
 import com.fpuna.arandu.Adapters.CategoriaAdapterRecyclerView;
 import com.fpuna.arandu.Adapters.CuentoAdapterRecyclerView;
 import com.fpuna.arandu.Clases.Audio;
-import com.fpuna.arandu.Interfaces.ICuento;
+import com.fpuna.arandu.Interfaces.IAudio;
 import com.fpuna.arandu.Presenters.AudioPresenter;
 import com.fpuna.arandu.R;
 
 import java.util.ArrayList;
 
-public class AudiosActivity extends AppCompatActivity implements ICuento.View{
+public class AudiosActivity extends AppCompatActivity implements IAudio.View{
 
-    ICuento.Presenter presenter;
+    IAudio.Presenter presenter;
     View reproductor;
     ImageButton play;
     ImageButton pause;

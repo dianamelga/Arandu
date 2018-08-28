@@ -4,15 +4,14 @@ import com.fpuna.arandu.Clases.Audio;
 
 import java.util.ArrayList;
 
-public interface ICuento {
+public interface IAudio {
 
     public interface Model extends IModel {
-        public int getCodResultado();
-        public String getResultado();
-        public void descargarAudio();
-        public void playAudio(String urlAudio);
-        public void pauseAudio();
-        public int tiempoTranscurrido();
+        public void descargarAudio() throws Exception;
+        public void playAudio(String urlAudio) throws Exception;
+        public void pauseAudio() throws Exception;
+        public Integer getTiempoTranscurrido();
+        public Integer getTiempoAudio();
 
 
 
@@ -29,6 +28,7 @@ public interface ICuento {
         public void hidePause();
 
         public void cargarAdapter(ArrayList<Audio> audios);
+
 
     }
 

@@ -1,24 +1,16 @@
 package com.fpuna.arandu.Models;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.net.Uri;
-import android.provider.MediaStore;
-import android.widget.Toast;
 
-import com.fpuna.arandu.Interfaces.ICuento;
+import com.fpuna.arandu.Interfaces.IAudio;
 import com.fpuna.arandu.R;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.net.URI;
+import java.security.spec.ECField;
 
-public class AudioModel implements ICuento.Model {
-    private int codResultado;
-    private String resultado;
+public class AudioModel implements IAudio.Model {
+
     private Context context;
     private MediaPlayer mediaPlayer = new MediaPlayer();
 
@@ -27,24 +19,16 @@ public class AudioModel implements ICuento.Model {
         super();
     }
 
-    @Override
-    public int getCodResultado() {
-        return this.codResultado;
-    }
 
     @Override
-    public String getResultado() {
-        return this.resultado;
-    }
-
-    @Override
-    public void descargarAudio() {
+    public void descargarAudio() throws Exception {
 
         //descarga el audio y lo almacena en carpeta de descargas
+        throw new Exception("Error hecho a propósito...");
     }
 
     @Override
-    public void playAudio(String fileInfo) {
+    public void playAudio(String fileInfo) throws Exception {
         //recibe el url del audio para reproducir
         //fileInfo = "http://localhost/~luiscapde/mp3/despacito.mp3";
         fileInfo = "http://www.all-birds.com/Sound/white%20geese%20shrt.wav";
@@ -65,7 +49,7 @@ public class AudioModel implements ICuento.Model {
     }
 
     @Override
-    public void pauseAudio() {
+    public void pauseAudio() throws Exception{
         //pausa el audio que se esta reproduciendo
         if(mediaPlayer.isPlaying()){
             mediaPlayer.pause();
@@ -75,6 +59,17 @@ public class AudioModel implements ICuento.Model {
         }
     }
 
+    @Override
+    public Integer getTiempoTranscurrido() {
+        Integer posicion = mediaPlayer.getCurrentPosition();
+        return posicion;
+    }
+
+    @Override
+    public Integer getTiempoAudio() {
+        return null;
+    }
+
 
     @Override
     public void setContext(Context context) {
@@ -82,10 +77,5 @@ public class AudioModel implements ICuento.Model {
         this.context = context;
     }
 
-    @Override
-    public int  tiempoTranscurrido(){
-        int posicion = mediaPlayer.getCurrentPosition();
-        return posicion;
 
-    }
 }

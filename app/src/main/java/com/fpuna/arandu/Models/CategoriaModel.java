@@ -11,8 +11,6 @@ import java.util.ArrayList;
 
 public class CategoriaModel implements ICategoria.Model {
 
-    private int codResultado;
-    private String resultado;
     private ArrayList<Categoria> categorias;
     private Context context;
 
@@ -21,16 +19,6 @@ public class CategoriaModel implements ICategoria.Model {
         //consumir webService y cargar los datos a los atributos de la clase
 
         cargaDatosDePrueba();
-    }
-
-    @Override
-    public int getCodResultado() {
-        return this.codResultado;
-    }
-
-    @Override
-    public String getResultado() {
-        return this.resultado;
     }
 
     @Override
@@ -428,7 +416,5 @@ public class CategoriaModel implements ICategoria.Model {
         categoria.setAudios(audios);
         this.categorias.add(categoria);
 
-        this.codResultado = Constante.OK;
-        this.resultado = "OK";
     }
 }

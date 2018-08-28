@@ -33,10 +33,16 @@ public class CategoriaPresenter implements ICategoria.Presenter {
 
     private class AsyncCategoria extends AsyncTask<Void, Void, Void> {
 
+        private Throwable throwable;
         @Override
         protected Void doInBackground(Void... voids) {
             model.setContext(view.getContext());
-            model.consultar();
+            try {
+                model.consultar();
+            } catch (Exception e) {
+                e.printStackTrace();
+                throwable = e;
+            }
 
             return null;
         }
@@ -45,8 +51,8 @@ public class CategoriaPresenter implements ICategoria.Presenter {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             view.dismissProgressDialog();
-            if(model.getCodResultado() != Constante.OK) {
-                view.showMessage(model.getResultado());
+            if(throwable != null) {
+                view.showMessage(throwable.getMessage());
             }else{
                 loadView();
             }

@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.fpuna.arandu.Clases.Audio;
-import com.fpuna.arandu.Interfaces.ICuento;
+import com.fpuna.arandu.Interfaces.IAudio;
 import com.fpuna.arandu.R;
 
 import java.util.ArrayList;
@@ -21,11 +21,11 @@ public class CuentoAdapterRecyclerView extends RecyclerView.Adapter<CuentoAdapte
     private ArrayList<Audio> audios;
     private int resource;
     private Activity activity;
-    private ICuento.Presenter presenter;
+    private IAudio.Presenter presenter;
     public static Audio audio;
 
 
-    public CuentoAdapterRecyclerView(ArrayList<Audio> audios, int resource, Activity activity, ICuento.Presenter presenter) {
+    public CuentoAdapterRecyclerView(ArrayList<Audio> audios, int resource, Activity activity, IAudio.Presenter presenter) {
         this.audios = audios;
         this.resource = resource;
         this.activity = activity;

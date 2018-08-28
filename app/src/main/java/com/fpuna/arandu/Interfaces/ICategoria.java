@@ -8,9 +8,7 @@ public interface ICategoria {
 
     public interface Model extends IModel {
 
-        public void consultar();
-        public int getCodResultado();
-        public String getResultado();
+        public void consultar() throws Exception;
         public ArrayList<Categoria> getCategorias();
     }
 
