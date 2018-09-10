@@ -254,4 +254,12 @@ public class AudiosActivity extends AppCompatActivity implements IAudio.View{
         super.onBackPressed();
         presenter.stopAudio();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.stopAudio();
+    }
+
+    
 }
