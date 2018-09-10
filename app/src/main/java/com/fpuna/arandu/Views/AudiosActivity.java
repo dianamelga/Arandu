@@ -40,6 +40,8 @@ public class AudiosActivity extends AppCompatActivity implements IAudio.View{
     private Audio audio;
     private ProgressDialog dialogo;
     private SeekBar seekBarAudio;
+    private ArrayList<Audio> audios;
+    private boolean changeListAudio = true;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -170,6 +172,9 @@ public class AudiosActivity extends AppCompatActivity implements IAudio.View{
     @Override
     public void cargarAdapter(ArrayList<Audio> audios) {
 
+        if(changeListAudio) {
+            this.audios = audios;
+        }
         RecyclerView cuentoRecycler = findViewById(R.id.cuento_recycler);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
@@ -233,7 +238,8 @@ public class AudiosActivity extends AppCompatActivity implements IAudio.View{
             {
                 public boolean onQueryTextChange(String newText)
                 {
-                    //filtrar las categorias
+                    //filtrar los audios
+                    filtrarAudios(newText);
                     return true;
                 }
 
@@ -241,6 +247,8 @@ public class AudiosActivity extends AppCompatActivity implements IAudio.View{
                 {
                     return true;
                 }
+
+
             };
 
             mSearchView.setOnQueryTextListener(queryTextListener);
@@ -259,6 +267,28 @@ public class AudiosActivity extends AppCompatActivity implements IAudio.View{
     protected void onDestroy() {
         super.onDestroy();
         presenter.stopAudio();
+    }
+
+    private void filtrarAudios(String text) {
+
+        this.changeListAudio = false;
+        if(this.audios != null){
+            if(text.isEmpty()) {
+
+               this.cargarAdapter(this.audios);
+            }else{
+
+                ArrayList<Audio> audiosFiltrados = new ArrayList<>();
+                for(Audio audio : this.audios) {
+                    if(audio.getNombre().toUpperCase().contains(text.toUpperCase())) {
+                        audiosFiltrados.add(audio);
+                    }
+                }
+
+                this.cargarAdapter(audiosFiltrados);
+            }
+        }
+        this.changeListAudio = true;
     }
 
 
