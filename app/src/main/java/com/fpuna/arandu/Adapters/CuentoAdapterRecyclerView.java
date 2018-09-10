@@ -22,7 +22,7 @@ public class CuentoAdapterRecyclerView extends RecyclerView.Adapter<CuentoAdapte
     private int resource;
     private Activity activity;
     private IAudio.Presenter presenter;
-    public static Audio audio;
+    private Audio audio;
 
 
     public CuentoAdapterRecyclerView(ArrayList<Audio> audios, int resource, Activity activity, IAudio.Presenter presenter) {

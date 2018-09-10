@@ -2,16 +2,29 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_height="70dp"
-    android:orientation="horizontal"
+    android:layout_height="80dp"
+    android:orientation="vertical"
     android:background="@color/colorLightPrimary"
     android:weightSum="1"
     >
 
+    <SeekBar
+        android:id="@+id/seekBarAudio"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.4"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_weight="0.6"
+        >
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="0.8"
+        android:layout_weight="0.6"
         android:orientation="horizontal">
 
         <me.grantland.widget.AutofitTextView
@@ -54,4 +67,20 @@
             android:visibility="gone" />
 
     </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.2"
+        >
+    <ImageButton
+        android:id="@+id/button_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_stop"
+        android:layout_gravity="center"
+        />
+    </FrameLayout>
+    </LinearLayout>
 </LinearLayout>

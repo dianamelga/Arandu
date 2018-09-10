@@ -1,5 +1,6 @@
 package com.fpuna.arandu.Views;
 
+import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.support.design.widget.Snackbar;
@@ -9,11 +10,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,22 +31,27 @@ import java.util.ArrayList;
 
 public class AudiosActivity extends AppCompatActivity implements IAudio.View{
 
-    IAudio.Presenter presenter;
-    View reproductor;
-    ImageButton play;
-    ImageButton pause;
-    SearchView mSearchView;
+    private IAudio.Presenter presenter;
+    private View reproductor;
+    private  ImageButton play;
+    private ImageButton pause;
+    private ImageButton stop;
+    private SearchView mSearchView;
+    private Audio audio;
+    private ProgressDialog dialogo;
+    private SeekBar seekBarAudio;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_audios);
         reproductor = (View) findViewById(R.id.reproductor_audio);
-
+        this.dialogo = new ProgressDialog(this);
         play = reproductor.findViewById(R.id.button_play);
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.playAudio(CuentoAdapterRecyclerView.audio.getUrlAudio());
+                presenter.playAudio(audio.getUrlAudio());
 
 
             }
@@ -57,9 +65,40 @@ public class AudiosActivity extends AppCompatActivity implements IAudio.View{
             }
         });
 
+        stop = reproductor.findViewById(R.id.button_stop);
+        stop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                presenter.stopAudio();
+            }
+        });
+
+        seekBarAudio = reproductor.findViewById(R.id.seekBarAudio);
+        seekBarAudio.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUSer) {
+
+                if(fromUSer) {
+                    presenter.resumeOnPosition(progress);
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+
+            }
+        });
+
         showToolbar(CategoriaAdapterRecyclerView.categoria.getNombreCastellano(), true);
         presenter = new AudioPresenter(this, CategoriaAdapterRecyclerView.categoria);
         presenter.loadView();
+
     }
 
     @Override
@@ -78,11 +117,29 @@ public class AudiosActivity extends AppCompatActivity implements IAudio.View{
     @Override
     public void showReproductor(Audio audio) {
 
+        this.audio = audio;
         reproductor.setVisibility(View.VISIBLE);
         TextView nombreCuentoAudio = reproductor.findViewById(R.id.nombre_cuento_audio);
         nombreCuentoAudio.setText(audio.getNombre() + " - "+ audio.getAutor());
 
 
+    }
+
+    @Override
+    public void showProgressMessage(String message) {
+
+        dialogo.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialogo.setMessage(message);
+        dialogo.setCancelable(false);
+        dialogo.setMax(50);
+        dialogo.show();
+    }
+
+    @Override
+    public void hideProgressMessage() {
+        if(dialogo != null) {
+            dialogo.dismiss();
+        }
     }
 
     @Override
@@ -124,6 +181,23 @@ public class AudiosActivity extends AppCompatActivity implements IAudio.View{
                 audios, R.layout.cardview_cuento, this, this.presenter);
 
         cuentoRecycler.setAdapter(cuentoAdapterRecyclerView);
+    }
+
+    @Override
+    public void setSeekBarMaxSize(int seekBarMaxSize) {
+        if(this.seekBarAudio != null)
+        this.seekBarAudio.setMax(seekBarMaxSize);
+    }
+
+    @Override
+    public void setSeekBarProgress(int progress) {
+        if(this.seekBarAudio != null)
+            this.seekBarAudio.setProgress(progress);
+    }
+
+    @Override
+    public void setRunnable(Runnable runnable) {
+        runOnUiThread(runnable);
     }
 
     @Override
@@ -173,5 +247,11 @@ public class AudiosActivity extends AppCompatActivity implements IAudio.View{
         }
         return super.onCreateOptionsMenu(menu);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        presenter.stopAudio();
     }
 }

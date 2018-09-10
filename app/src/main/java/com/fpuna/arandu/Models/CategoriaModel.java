@@ -32,7 +32,7 @@ public class CategoriaModel implements ICategoria.Model {
     }
 
     private void cargaDatosDePrueba(){
-        String urlAudio = ""; //aca pone un link de audio para hacer tus pruebas
+        String urlAudio = Constante.urlService+"/archivos/mp3/categoria_1/audio_1.mp3"; //aca pone un link de audio para hacer tus pruebas
         this.categorias = new ArrayList<>();
         Categoria categoria = new Categoria();
         categoria.setId(1);
@@ -46,7 +46,7 @@ public class CategoriaModel implements ICategoria.Model {
         audio.setIdCategoria(1);
         audio.setNombre("Pira'i");
         audio.setAutor("Maria Georgina Gonzalez Moran");
-        audio.setUrlAudio("");
+        audio.setUrlAudio(urlAudio);
         audios.add(audio);
 
         categoria.setAudios(audios);
@@ -66,7 +66,7 @@ public class CategoriaModel implements ICategoria.Model {
         audio.setIdCategoria(2);
         audio.setNombre("Silla de rueda pyahu");
         audio.setAutor("Alcibiades Britez");
-        audio.setUrlAudio("");
+        audio.setUrlAudio(urlAudio);
         audios.add(audio);
 
         audio = new Audio();

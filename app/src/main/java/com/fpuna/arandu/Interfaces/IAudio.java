@@ -10,8 +10,10 @@ public interface IAudio {
         public void descargarAudio() throws Exception;
         public void playAudio(String urlAudio) throws Exception;
         public void pauseAudio() throws Exception;
+        public void stopAudio() throws Exception;
+        public void resumeOnPosition(int position) throws Exception;
         public Integer getTiempoTranscurrido();
-        public Integer getTiempoAudio();
+        public int getTiempoAudio();
 
 
 
@@ -22,12 +24,17 @@ public interface IAudio {
         public void showSnackBar(String message);
         public void showMessage(String message);
         public void showReproductor(Audio audio);
+        public void showProgressMessage(String message);
+        public void hideProgressMessage();
         public void showPlay();
         public void showPause();
         public void hidePlay();
         public void hidePause();
 
         public void cargarAdapter(ArrayList<Audio> audios);
+        public void setSeekBarMaxSize(int seekBarMaxSize);
+        public void setSeekBarProgress(int progress);
+        public void setRunnable(Runnable runnable);
 
 
     }
@@ -39,5 +46,7 @@ public interface IAudio {
         public void descargarAudio(String urlAudio);
         public void playAudio(String urlAudio);
         public void pauseAudio();
+        public void stopAudio();
+        public void resumeOnPosition(int position);
     }
 }

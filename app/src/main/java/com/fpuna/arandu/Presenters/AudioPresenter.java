@@ -1,6 +1,7 @@
 package com.fpuna.arandu.Presenters;
 
 import android.os.AsyncTask;
+import android.os.Handler;
 
 import com.fpuna.arandu.Clases.Categoria;
 import com.fpuna.arandu.Clases.Constante;
@@ -33,7 +34,6 @@ public class AudioPresenter implements IAudio.Presenter {
 
     @Override
     public void descargarAudio(String urlAudio) {
-        view.showSnackBar("Descargando audio...");
         AsyncDescarga asyncDescarga = new AsyncDescarga(urlAudio);
         asyncDescarga.execute();
     }
@@ -41,13 +41,8 @@ public class AudioPresenter implements IAudio.Presenter {
     @Override
     public void playAudio(String urlAudio) {
 
-        try {
-            model.playAudio(urlAudio);
-        } catch (Exception e) {
-            e.printStackTrace();
-            this.view.showMessage("Error al reproducir audio.");
-            return;
-        }
+        AsyncPlayAudio play = new AsyncPlayAudio(urlAudio);
+        play.execute();
         view.showPause();
         view.hidePlay();
 
@@ -67,6 +62,26 @@ public class AudioPresenter implements IAudio.Presenter {
 
     }
 
+    @Override
+    public void stopAudio() {
+        try {
+            model.stopAudio();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        view.showPlay();
+        view.hidePause();
+    }
+
+    @Override
+    public void resumeOnPosition(int position) {
+        try {
+            this.model.resumeOnPosition(position);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public class AsyncDescarga extends AsyncTask<Void, Void, Void>{
 
         private String urlAudio;
@@ -74,6 +89,12 @@ public class AudioPresenter implements IAudio.Presenter {
 
         public AsyncDescarga(String urlAudio) {
             this.urlAudio = urlAudio;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            view.showProgressMessage("Descargando audio...");
         }
 
         @Override
@@ -90,11 +111,64 @@ public class AudioPresenter implements IAudio.Presenter {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
+            view.hideProgressMessage();
             if(throwable == null) {
-                view.showSnackBar("Audio desargado.");
+                view.showSnackBar("Audio descargado.");
             }else{
                 view.showSnackBar("No se pudo descargar el audio.");
             }
+        }
+    }
+
+    public class AsyncPlayAudio extends AsyncTask<Void, Void, Void> {
+        private String urlAudio;
+        private Throwable throwable;
+
+        public AsyncPlayAudio(String urlAudio) {
+            this.urlAudio = urlAudio;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+            try {
+                model.playAudio(urlAudio);
+            } catch (Exception e) {
+                e.printStackTrace();
+                throwable = e;
+                return null;
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            view.showProgressMessage("Preparando audio...");
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            view.hideProgressMessage();
+            if(throwable != null) {
+                view.showMessage("Hubo un error al tratar de reproducir el audio");
+                view.showPlay();
+                view.hidePause();
+                return;
+            }
+
+            view.setSeekBarMaxSize(model.getTiempoAudio());
+
+            view.setRunnable(new Runnable() {
+                @Override
+                public void run() {
+                    Handler handler = new Handler();
+                    view.setSeekBarProgress(model.getTiempoTranscurrido());
+                    handler.postDelayed(this,100);
+                }
+            });
+
         }
     }
 
