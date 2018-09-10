@@ -47,7 +47,7 @@ public class AudioModel implements IAudio.Model {
             InputStream input = new BufferedInputStream(url.openStream());
             Log.d("debug", "path: "+ Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS));
             OutputStream output = new FileOutputStream(
-                    Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)+"audio_1.mp3");
+                    Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)+"/audio_1.mp3");
 
             byte data[] = new byte[1024];
             long total = 0;
