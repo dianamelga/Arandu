@@ -261,5 +261,5 @@ public class AudiosActivity extends AppCompatActivity implements IAudio.View{
         presenter.stopAudio();
     }
 
-    
+
 }
