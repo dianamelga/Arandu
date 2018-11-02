@@ -11,8 +11,6 @@ public class Categoria {
     private String nombreCastellano;
     private ArrayList<Audio> audios;
 
-
-
     public void setId(Integer id) {
         this.id = id;
     }
