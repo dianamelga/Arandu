@@ -22,7 +22,7 @@ public class GJsonDecoder<T> {
     /**
      *
      * @param <T>
-     * @param url - Link del servicio a consumir
+     * @param url - Link de los datos a consumir
      * @param  clazz - Clase[].class como parametro
      * 
      * @return Listado de elementos

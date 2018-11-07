@@ -122,7 +122,7 @@ public class AudiosActivity extends AppCompatActivity implements IAudio.View{
         this.audio = audio;
         reproductor.setVisibility(View.VISIBLE);
         TextView nombreCuentoAudio = reproductor.findViewById(R.id.nombre_cuento_audio);
-        nombreCuentoAudio.setText(audio.getNombre() + " - "+ audio.getAutor());
+        nombreCuentoAudio.setText(audio.getTitulo() + " - "+ audio.getAutor());
 
 
     }
@@ -280,7 +280,7 @@ public class AudiosActivity extends AppCompatActivity implements IAudio.View{
 
                 ArrayList<Audio> audiosFiltrados = new ArrayList<>();
                 for(Audio audio : this.audios) {
-                    if(audio.getNombre().toUpperCase().contains(text.toUpperCase())) {
+                    if(audio.getTitulo().toUpperCase().contains(text.toUpperCase())) {
                         audiosFiltrados.add(audio);
                     }
                 }
