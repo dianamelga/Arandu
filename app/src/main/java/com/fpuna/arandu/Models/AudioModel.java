@@ -102,9 +102,12 @@ public class AudioModel implements IAudio.Model {
 
     @Override
     public void stopAudio() throws Exception {
-        mediaPlayer.stop();
-        mediaPlayer.release();
-        mediaPlayer = null;
+
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
     }
 
     @Override
