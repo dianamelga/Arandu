@@ -3,7 +3,7 @@ package com.fpuna.arandu.Clases;
 public class Audio {
 
     private Integer id;
-    private String nombre;
+    private String titulo;
     private String autor;
     private String urlAudio; //url del audio
     private Integer idCategoria;
@@ -17,12 +17,12 @@ public class Audio {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getTitulo() {
+        return titulo;
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        this.titulo = nombre;
     }
 
     public String getAutor() {

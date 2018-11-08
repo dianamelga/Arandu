@@ -44,7 +44,7 @@ public class CuentoAdapterRecyclerView extends RecyclerView.Adapter<CuentoAdapte
 
         //aca se trabaja con la lista de elementos, asignamos los datos al cardview
         audio = audios.get(position);
-        holder.nombreCuento.setText(audio.getNombre());
+        holder.nombreCuento.setText(audio.getTitulo());
         holder.autorCuento.setText(audio.getAutor());
 
         holder.cuento.setOnClickListener(new View.OnClickListener() {

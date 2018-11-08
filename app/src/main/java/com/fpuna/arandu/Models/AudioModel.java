@@ -26,8 +26,6 @@ public class AudioModel implements IAudio.Model {
     private MediaPlayer mediaPlayer;
     private int currentPosition;
 
-
-
     @Override
     public void descargarAudio() throws Exception {
 
