@@ -18,7 +18,7 @@ public class CategoriaModel implements ICategoria.Model {
     private Context context;
 
     @Override
-    public void consultar() {
+    public void consultar() throws Exception {
         List<CategoriaResponse> catList = GJsonDecoder.getArrayGJson(
                 Constante.urlService + "/api/categoria",
                 CategoriaResponse[].class

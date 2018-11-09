@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="80dp"
     android:orientation="vertical"
-    android:background="@color/colorLightPrimary"
+    android:background="@android:color/white"
     android:weightSum="1"
     >
 
@@ -21,10 +21,18 @@
         android:weightSum="1"
         android:layout_weight="0.6"
         >
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/audio_2"
+            android:layout_weight="0.2"
+            android:padding="2dp"
+            />
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="0.6"
+        android:layout_weight="0.4"
         android:orientation="horizontal">
 
         <me.grantland.widget.AutofitTextView

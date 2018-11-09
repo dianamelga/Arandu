@@ -1,5 +1,6 @@
 package com.fpuna.arandu;
 
+import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.support.v4.view.MenuItemCompat;
@@ -24,12 +25,14 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements ICategoria.View {
     public ICategoria.Presenter presenter;
+    private ProgressDialog dialogo;
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         showToolbar("Aranduka", false);
+        this.dialogo = new ProgressDialog(this);
         presenter = new CategoriaPresenter(this);
         presenter.consultar();
 
@@ -38,13 +41,19 @@ public class MainActivity extends AppCompatActivity implements ICategoria.View {
 
 
     @Override
-    public void showProgressDialog() {
-
+    public void showProgressDialog(String message) {
+        dialogo.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialogo.setMessage(message);
+        dialogo.setCancelable(false);
+        dialogo.setMax(50);
+        dialogo.show();
     }
 
     @Override
     public void dismissProgressDialog() {
-
+        if(dialogo != null) {
+            dialogo.dismiss();
+        }
     }
 
     @Override
@@ -68,8 +77,8 @@ public class MainActivity extends AppCompatActivity implements ICategoria.View {
     }
 
     @Override
-    public Context getContext() {
-        return getApplicationContext();
+    public Context obtContext() {
+        return this;
     }
 
     public void showToolbar(String title, boolean upButton){

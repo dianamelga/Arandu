@@ -14,7 +14,7 @@ public interface ICategoria {
 
     public interface View extends  IView {
 
-        public void showProgressDialog();
+        public void showProgressDialog(String message);
         public void dismissProgressDialog();
         public void showMessage(String message);
 

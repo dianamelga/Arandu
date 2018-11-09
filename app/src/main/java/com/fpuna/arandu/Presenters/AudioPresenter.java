@@ -22,7 +22,7 @@ public class AudioPresenter implements IAudio.Presenter {
 
     @Override
     public void loadView() {
-        this.model.setContext(view.getContext());
+        this.model.setContext(view.obtContext());
         this.view.cargarAdapter(categoria.getAudios());
     }
 

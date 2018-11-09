@@ -27,7 +27,7 @@ public class GJsonDecoder<T> {
      * 
      * @return Listado de elementos
      */
-    public static <T> List<T> getArrayGJson(String url, Class<T[]> clazz){
+    public static <T> List<T> getArrayGJson(String url, Class<T[]> clazz) throws Exception{
        String json = new UrlGetRequest(url).get();
        T[] arr = new Gson().fromJson(json, clazz);
        
@@ -42,7 +42,7 @@ public class GJsonDecoder<T> {
      * @param clazz - Clase.class
      * @return - Objeto Deserializado
      */
-    public static <T> T getObjectGJson(String url, Class<T> clazz){
+    public static <T> T getObjectGJson(String url, Class<T> clazz) throws Exception{
         String json = new UrlGetRequest(url).get();
         T data = new Gson().fromJson(json, clazz);
         return data;

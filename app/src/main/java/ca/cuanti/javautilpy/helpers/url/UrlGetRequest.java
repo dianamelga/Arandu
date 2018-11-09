@@ -35,8 +35,8 @@ public class UrlGetRequest {
      * 
      * @return String or null
      */
-    public String get(){
-        try {
+    public String get() throws Exception{
+
             URL url = new URL(this.URLParam); 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
@@ -60,13 +60,6 @@ public class UrlGetRequest {
             
             conn.disconnect();
             return sb.toString();
-        }
-        catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        
-        return null;
+
     }
 }

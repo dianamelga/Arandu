@@ -1,6 +1,7 @@
 package com.fpuna.arandu.Presenters;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.fpuna.arandu.Clases.Constante;
 import com.fpuna.arandu.Interfaces.ICategoria;
@@ -18,7 +19,7 @@ public class CategoriaPresenter implements ICategoria.Presenter {
     @Override
     public void consultar() {
 
-        view.showProgressDialog();
+
         AsyncCategoria asyncCategoria = new AsyncCategoria();
         asyncCategoria.execute();
 
@@ -34,9 +35,16 @@ public class CategoriaPresenter implements ICategoria.Presenter {
     private class AsyncCategoria extends AsyncTask<Void, Void, Void> {
 
         private Throwable throwable;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            view.showProgressDialog("Buscando categorías...");
+        }
+
         @Override
         protected Void doInBackground(Void... voids) {
-            model.setContext(view.getContext());
+            model.setContext(view.obtContext());
             try {
                 model.consultar();
             } catch (Exception e) {

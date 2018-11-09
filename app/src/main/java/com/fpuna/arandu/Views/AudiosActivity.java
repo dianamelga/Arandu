@@ -177,7 +177,7 @@ public class AudiosActivity extends AppCompatActivity implements IAudio.View{
         }
         RecyclerView cuentoRecycler = findViewById(R.id.cuento_recycler);
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
         cuentoRecycler.setLayoutManager(linearLayoutManager);
@@ -206,8 +206,8 @@ public class AudiosActivity extends AppCompatActivity implements IAudio.View{
     }
 
     @Override
-    public Context getContext() {
-        return getApplicationContext();
+    public Context obtContext() {
+        return this;
     }
 
     public void showToolbar(String title, boolean upButton){
