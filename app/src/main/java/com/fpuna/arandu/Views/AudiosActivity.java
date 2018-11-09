@@ -26,6 +26,7 @@ import com.fpuna.arandu.Clases.Audio;
 import com.fpuna.arandu.Interfaces.IAudio;
 import com.fpuna.arandu.Presenters.AudioPresenter;
 import com.fpuna.arandu.R;
+import com.fpuna.arandu.Utils.MostrarAlerta;
 
 import java.util.ArrayList;
 
@@ -113,7 +114,8 @@ public class AudiosActivity extends AppCompatActivity implements IAudio.View{
     @Override
     public void showMessage(String message) {
 
-        Toast.makeText(this,message,Toast.LENGTH_LONG).show();
+
+        MostrarAlerta.mensaje(this, message);
     }
 
     @Override

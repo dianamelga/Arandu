@@ -20,6 +20,7 @@ import com.fpuna.arandu.Adapters.CategoriaAdapterRecyclerView;
 import com.fpuna.arandu.Interfaces.ICategoria;
 import com.fpuna.arandu.Clases.Categoria;
 import com.fpuna.arandu.Presenters.CategoriaPresenter;
+import com.fpuna.arandu.Utils.MostrarAlerta;
 
 import java.util.ArrayList;
 
@@ -59,7 +60,8 @@ public class MainActivity extends AppCompatActivity implements ICategoria.View {
     @Override
     public void showMessage(String message) {
 
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+
+        MostrarAlerta.mensaje(this, message);
     }
 
     @Override
