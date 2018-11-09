@@ -8,6 +8,14 @@ import com.fpuna.arandu.Clases.Constante;
 import com.fpuna.arandu.Clases.Audio;
 import com.fpuna.arandu.Interfaces.IAudio;
 import com.fpuna.arandu.Models.AudioModel;
+import com.fpuna.arandu.Utils.ErrorMessage;
+
+import java.net.ConnectException;
+import java.net.SocketException;
+import java.net.SocketTimeoutException;
+import java.net.UnknownHostException;
+
+import javax.net.ssl.SSLException;
 
 public class AudioPresenter implements IAudio.Presenter {
     IAudio.Model model;
@@ -116,7 +124,9 @@ public class AudioPresenter implements IAudio.Presenter {
             if(throwable == null) {
                 view.showSnackBar("Audio descargado.");
             }else{
-                view.showSnackBar("No se pudo descargar el audio.");
+                ErrorMessage errorMessage = new ErrorMessage();
+                view.showMessage("No se pudo descargar el audio. "+errorMessage.get(throwable));
+
             }
         }
     }
