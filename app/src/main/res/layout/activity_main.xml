@@ -1,14 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.fpuna.arandu.MainActivity"
+    tools:context=".MainActivity"
     android:background="@color/fondo">
 
-    <!--include layout="@layout/action_toolbar"/-->
     <android.support.design.widget.AppBarLayout android:layout_width="match_parent"
         android:layout_height="wrap_content"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -37,29 +36,15 @@
         </FrameLayout>
     </android.support.design.widget.AppBarLayout>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <com.stepstone.stepper.StepperLayout
+        android:id="@+id/stepper"
         android:layout_height="match_parent"
+        android:layout_width="match_parent"
         android:orientation="vertical"
+        app:ms_stepperType="dots"
 
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin">
-
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/categoria_recycler"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
-
-    </LinearLayout>
-
-    </FrameLayout>
+        app:ms_activeStepColor="@color/colorPrimaryDark"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
 </android.support.design.widget.CoordinatorLayout>

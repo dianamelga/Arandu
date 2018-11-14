@@ -20,17 +20,24 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.fpuna.arandu.Adapters.CategoriaAdapterRecyclerView;
+import com.fpuna.arandu.Adapters.MyStepperAdapter;
 import com.fpuna.arandu.Interfaces.ICategoria;
 import com.fpuna.arandu.Clases.Categoria;
+import com.fpuna.arandu.Interfaces.IMain;
 import com.fpuna.arandu.Presenters.CategoriaPresenter;
+import com.fpuna.arandu.Presenters.MainPresenter;
 import com.fpuna.arandu.Utils.MostrarAlerta;
 import com.fpuna.arandu.Views.InformacionActivity;
+import com.stepstone.stepper.Step;
+import com.stepstone.stepper.StepperLayout;
+import com.stepstone.stepper.VerificationError;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements ICategoria.View {
-    public ICategoria.Presenter presenter;
+public class MainActivity extends AppCompatActivity implements IMain.View,  StepperLayout.StepperListener {
+    public IMain.Presenter presenter;
     private ProgressDialog dialogo;
+    private StepperLayout mStepperLayout;
 
 
 
@@ -40,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements ICategoria.View {
         showToolbar("ArandukApp", false);
         this.dialogo = new ProgressDialog(this);
         ImageButton btnInfo = findViewById(R.id.info_app);
+        mStepperLayout = (StepperLayout) findViewById(R.id.stepper);
         btnInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,12 +55,22 @@ public class MainActivity extends AppCompatActivity implements ICategoria.View {
                 startActivity(intent);
             }
         });
-        presenter = new CategoriaPresenter(this);
-        presenter.consultar();
+        presenter = new MainPresenter(this);
+        presenter.loadView();
 
 
     }
 
+
+    @Override
+    public void setAdapterStepper(ArrayList<Step> fragments, ArrayList<String> titles) {
+        MyStepperAdapter myStepperAdapter = new MyStepperAdapter(getSupportFragmentManager(),
+                this, fragments, titles);
+
+        mStepperLayout.setAdapter(myStepperAdapter);
+
+        mStepperLayout.setListener(this);
+    }
 
     @Override
     public void showProgressDialog(String message) {
@@ -77,19 +95,6 @@ public class MainActivity extends AppCompatActivity implements ICategoria.View {
         MostrarAlerta.mensaje(this, message);
     }
 
-    @Override
-    public void cargarAdapter(ArrayList<Categoria> categorias) {
-
-        RecyclerView categoriaRecycler = (RecyclerView) findViewById(R.id.categoria_recycler);
-
-        categoriaRecycler.setLayoutManager(new GridLayoutManager(this, 2));
-
-        CategoriaAdapterRecyclerView categoriaAdapterRecyclerView = new CategoriaAdapterRecyclerView(
-                categorias, R.layout.cardview_categoria, this);
-
-        categoriaRecycler.setAdapter(categoriaAdapterRecyclerView);
-
-    }
 
     @Override
     public Context obtContext() {
@@ -109,5 +114,23 @@ public class MainActivity extends AppCompatActivity implements ICategoria.View {
     }
 
 
+    @Override
+    public void onCompleted(View completeButton) {
 
+    }
+
+    @Override
+    public void onError(VerificationError verificationError) {
+
+    }
+
+    @Override
+    public void onStepSelected(int newStepPosition) {
+
+    }
+
+    @Override
+    public void onReturn() {
+
+    }
 }
