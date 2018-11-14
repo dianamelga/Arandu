@@ -2,4 +2,8 @@
     <string name="app_name">Aranduka</string>
     <string name="search_hint">Buscar</string>
     <string name="titulo_1">Titulo</string>
+    <string name="link_spl">www.spl.gov.py</string>
+    <string name="telefono_spl">Tel.: (021)607 111</string>
+    <string name="direccion_spl">Avda Boggiani 6260 e/R.I.5 Gral.Díaz y R.I.4 Curupayty</string>
+    <string name="nombre_spl">Secretaría de Políticas Lingüísticas (SPL)</string>
 </resources>

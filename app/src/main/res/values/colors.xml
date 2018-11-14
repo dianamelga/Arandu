@@ -11,5 +11,6 @@
     <color name="rojo">#BF272D</color>
     <color name="grisOscuro">#4D4D4D</color>
     <color name="fondo">#D1D5DF</color>
+    <color name="link_color">#0645AD</color>
 
 </resources>

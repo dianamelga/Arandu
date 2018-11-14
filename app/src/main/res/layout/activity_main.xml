@@ -5,9 +5,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.fpuna.arandu.MainActivity">
+    tools:context="com.fpuna.arandu.MainActivity"
+    android:background="@color/fondo">
 
-    <include layout="@layout/action_toolbar"/>
+    <!--include layout="@layout/action_toolbar"/-->
+    <android.support.design.widget.AppBarLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar_main_activity"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+            <ImageButton
+                android:id="@+id/info_app"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/informacion"
+                android:background="@android:color/transparent"
+                android:layout_gravity="center|end"
+                android:layout_marginRight="10dp"
+                />
+
+        </FrameLayout>
+    </android.support.design.widget.AppBarLayout>
 
     <FrameLayout
         android:layout_width="match_parent"

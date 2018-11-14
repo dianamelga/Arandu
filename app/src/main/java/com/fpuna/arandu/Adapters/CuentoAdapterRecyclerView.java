@@ -86,7 +86,7 @@ public class CuentoAdapterRecyclerView extends RecyclerView.Adapter<CuentoAdapte
             cuento = (LinearLayout) itemView.findViewById(R.id.audio);
             nombreCuento = (TextView) itemView.findViewById(R.id.nombre_cuento);
             autorCuento = (TextView) itemView.findViewById(R.id.nombre_autor);
-            botonDownload = (ImageButton) itemView.findViewById(R.id.boton_download_cuento);
+            botonDownload = (ImageButton) itemView.findViewById(R.id.boton_download);
 
 
 
