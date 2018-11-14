@@ -29,6 +29,7 @@
                 android:layout_weight="0.2"/>
 
             <ImageView
+                android:id="@+id/escudoInfo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.6"
@@ -55,6 +56,7 @@
                         android:layout_weight="0.7"/>
 
                     <ImageView
+                        android:id="@+id/banderaInfo"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:src="@drawable/bandera"
@@ -82,6 +84,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.15"/>
             <ImageView
+                android:id="@+id/logo_institucionales_splInfo"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="0.7"
@@ -148,6 +151,7 @@
             android:layout_weight="0.05"/>
 
         <ImageView
+            android:id="@+id/logos_gobiernoInfo"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.9"

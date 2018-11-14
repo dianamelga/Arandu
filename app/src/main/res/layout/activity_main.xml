@@ -43,7 +43,7 @@
         android:layout_width="match_parent"
         android:orientation="vertical"
         app:ms_stepperType="dots"
-
+        android:scrollbars="horizontal"
         app:ms_activeStepColor="@color/colorPrimaryDark"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
