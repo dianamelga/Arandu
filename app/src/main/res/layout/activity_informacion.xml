@@ -26,23 +26,23 @@
             <View
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.2"/>
+                android:layout_weight="0.35" />
 
             <ImageView
                 android:id="@+id/escudoInfo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.6"
-                android:src="@drawable/escudo"
                 android:layout_gravity="center"
-                />
+                android:layout_weight="0.3"
+                android:src="@drawable/escudo" />
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.2"
-                android:weightSum="1"
-                android:orientation="vertical">
+                android:layout_weight="0.35"
+                android:orientation="vertical"
+                android:weightSum="1">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -53,20 +53,20 @@
                     <View
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="0.7"/>
+                        android:layout_weight="0.8" />
 
                     <ImageView
                         android:id="@+id/banderaInfo"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/bandera"
-                        android:layout_weight="0.3"
-                        />
+                        android:layout_weight="0.2"
+                        android:src="@drawable/bandera" />
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="0.5"/>
+                    android:layout_weight="0.5" />
             </LinearLayout>
 
         </LinearLayout>

@@ -44,17 +44,11 @@ public class MainActivity extends AppCompatActivity implements IMain.View,  Step
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        showToolbar("ArandukApp", false);
+
         this.dialogo = new ProgressDialog(this);
-        ImageButton btnInfo = findViewById(R.id.info_app);
+
         mStepperLayout = (StepperLayout) findViewById(R.id.stepper);
-        btnInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), InformacionActivity.class);
-                startActivity(intent);
-            }
-        });
+
         presenter = new MainPresenter(this);
         presenter.loadView();
 
@@ -101,17 +95,7 @@ public class MainActivity extends AppCompatActivity implements IMain.View,  Step
         return this;
     }
 
-    public void showToolbar(String title, boolean upButton){
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_main_activity);
-        /*para que se vea en versiones anteriores*/
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(title);
-        /* en caso de que tenga boton de regreso hacemos que sea visible*/
-        getSupportActionBar().setDisplayHomeAsUpEnabled(upButton);
 
-
-
-    }
 
 
     @Override
