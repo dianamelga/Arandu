@@ -82,62 +82,82 @@
             <View
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.15"/>
+                android:layout_weight="0.125"/>
             <ImageView
                 android:id="@+id/logo_institucionales_splInfo"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.7"
+                android:layout_weight="0.75"
                 android:src="@drawable/logo_institucionales_spl"/>
             <View
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.15"/>
+                android:layout_weight="0.125"/>
 
 
         </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="0.2"
-        android:orientation="vertical"
-        android:layout_gravity="center"
-        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:orientation="horizontal"
+            android:weightSum="1">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/nombre_spl"
-            android:textStyle="bold"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/direccion_spl"
-            />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.125"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/telefono_spl"
-            />
+        <LinearLayout
+            android:id="@+id/secretaria"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.75"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/nombre_spl"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/direccion_spl" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/direccion_spl_2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/telefono_spl" />
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/link_spl"
-            android:textColor="@color/link_color"
-            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/link_spl"
+                android:textColor="@color/link_color" />
 
 
+        </LinearLayout>
 
-    </LinearLayout>
-
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.125"/>
+        </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -148,19 +168,19 @@
         <View
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.05"/>
+            android:layout_weight="0.125" />
 
         <ImageView
             android:id="@+id/logos_gobiernoInfo"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.9"
-            android:src="@drawable/logos_gobierno"/>
+            android:layout_weight="0.75"
+            android:src="@drawable/logos_gobierno" />
 
         <View
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.05"/>
+            android:layout_weight="0.125" />
 
 
 
