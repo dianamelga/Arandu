@@ -54,7 +54,7 @@ public class CategoriaFragment extends Fragment implements ICategoria.View, Step
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar_main_activity);
         /*para que se vea en versiones anteriores*/
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("");
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.app_name));
         /* en caso de que tenga boton de regreso hacemos que sea visible*/
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 

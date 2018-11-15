@@ -75,13 +75,30 @@
                android:layout_weight="0.1"
                android:src="@drawable/ojapo" />
 
-           <ImageView
-               android:layout_width="wrap_content"
+           <LinearLayout
+               android:layout_width="match_parent"
                android:layout_height="0dp"
-               android:layout_gravity="center_horizontal"
                android:layout_weight="0.4"
-               android:src="@drawable/logo_institucionales_spl" />
+               android:weightSum="1">
 
+               <View
+                   android:layout_width="0dp"
+                   android:layout_height="match_parent"
+                   android:layout_weight="0.075" />
+
+               <ImageView
+                   android:id="@+id/spl"
+                   android:layout_width="0dp"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="0.85"
+                   android:src="@drawable/logo_institucionales_spl" />
+
+               <View
+                   android:layout_width="0dp"
+                   android:layout_height="match_parent"
+                   android:layout_weight="0.075" />
+
+           </LinearLayout>
            <ImageView
                android:layout_width="wrap_content"
                android:layout_height="0dp"
@@ -95,16 +112,28 @@
                android:layout_weight="0.2"
                android:orientation="horizontal"
                android:weightSum="1">
-           <ImageView
-               android:layout_width="0dp"
-               android:layout_height="match_parent"
-               android:layout_weight="0.5"
-               android:src="@drawable/logo_poli" />
+
+               <View
+                   android:layout_width="0dp"
+                   android:layout_height="match_parent"
+                   android:layout_weight="0.075" />
+
                <ImageView
                    android:layout_width="0dp"
                    android:layout_height="match_parent"
-                   android:layout_weight="0.5"
+                   android:layout_weight="0.425"
+                   android:src="@drawable/logo_poli" />
+
+               <ImageView
+                   android:layout_width="0dp"
+                   android:layout_height="match_parent"
+                   android:layout_weight="0.425"
                    android:src="@drawable/logo_ggg" />
+
+               <View
+                   android:layout_width="0dp"
+                   android:layout_height="match_parent"
+                   android:layout_weight="0.075" />
            </LinearLayout>
 
 
