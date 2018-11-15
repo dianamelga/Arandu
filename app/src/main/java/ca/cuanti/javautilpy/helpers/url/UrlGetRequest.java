@@ -1,5 +1,7 @@
 package ca.cuanti.javautilpy.helpers.url;
 
+import com.fpuna.arandu.Clases.Constante;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -41,6 +43,8 @@ public class UrlGetRequest {
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Accept", "application/json");
+            conn.setConnectTimeout(Constante.timeOutConnection);
+            conn.setReadTimeout(Constante.timeOutConnection);
 
             if (conn.getResponseCode() != 200) {
                 throw new RuntimeException("Failed : HTTP error code : "

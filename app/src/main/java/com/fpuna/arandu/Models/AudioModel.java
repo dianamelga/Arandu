@@ -36,6 +36,8 @@ public class AudioModel implements IAudio.Model {
         HttpURLConnection myConnection = (HttpURLConnection) url.openConnection();
         myConnection.setRequestProperty("Accept","application/json");
         myConnection.setRequestMethod("GET");
+        myConnection.setReadTimeout(Constante.timeOutConnection);
+        myConnection.setConnectTimeout(Constante.timeOutConnection);
 
         if(myConnection.getResponseCode() == 200) {
             Log.d("debug", "responseMessage: " +myConnection.getResponseMessage());

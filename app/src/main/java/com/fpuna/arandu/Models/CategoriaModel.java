@@ -19,8 +19,8 @@ public class CategoriaModel implements ICategoria.Model {
 
     @Override
     public void consultar() throws Exception {
-        cargaDatosDePrueba();
-        /*
+        //cargaDatosDePrueba();
+
         List<CategoriaResponse> catList = GJsonDecoder.getArrayGJson(
                 Constante.urlService + "/api/categoria",
                 CategoriaResponse[].class
@@ -37,7 +37,7 @@ public class CategoriaModel implements ICategoria.Model {
 
             this.categorias.add(categoria);
         }
-        */
+
     }
 
     @Override
