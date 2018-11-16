@@ -45,6 +45,9 @@
         app:ms_stepperType="dots"
         android:scrollbars="horizontal"
         app:ms_activeStepColor="@color/colorPrimary"
+        app:ms_nextButtonText="@string/siguiente"
+        app:ms_backButtonText="@string/volver"
+        app:ms_completeButtonText="@string/finalizar"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
 </android.support.design.widget.CoordinatorLayout>
