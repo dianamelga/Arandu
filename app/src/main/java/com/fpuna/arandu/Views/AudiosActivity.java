@@ -235,7 +235,7 @@ public class AudiosActivity extends AppCompatActivity implements IAudio.View{
 
         if (mSearchView != null) {
             mSearchView.setSearchableInfo(searchManager.getSearchableInfo(AudiosActivity.this.getComponentName()));
-
+            mSearchView.setQueryHint(getResources().getString(R.string.buscar));
             SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener()
             {
                 public boolean onQueryTextChange(String newText)
