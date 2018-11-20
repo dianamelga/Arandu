@@ -68,6 +68,15 @@ public class CuentoAdapterRecyclerView extends RecyclerView.Adapter<CuentoAdapte
             }
         });
 
+        holder.botonPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                audio = audios.get(position);
+                presenter.stopAudio();
+                presenter.showReproductor(audio);
+                presenter.playAudio(audios.get(position).getUrlAudio());
+            }
+        });
         //holder.botonDownload.setVisibility(View.INVISIBLE);
 
     }
@@ -83,6 +92,7 @@ public class CuentoAdapterRecyclerView extends RecyclerView.Adapter<CuentoAdapte
         private TextView nombreCuento;
         private TextView autorCuento;
         private ImageButton botonDownload;
+        private ImageButton botonPlay;
 
         public CuentoViewHolder(final View itemView) {
             super(itemView);
@@ -91,6 +101,7 @@ public class CuentoAdapterRecyclerView extends RecyclerView.Adapter<CuentoAdapte
             nombreCuento = (TextView) itemView.findViewById(R.id.nombre_cuento);
             autorCuento = (TextView) itemView.findViewById(R.id.nombre_autor);
             botonDownload = (ImageButton) itemView.findViewById(R.id.boton_download);
+            botonPlay = itemView.findViewById(R.id.boton_play);
 
 
 

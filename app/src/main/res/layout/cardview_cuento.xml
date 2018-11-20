@@ -31,51 +31,62 @@
             android:id="@+id/audio"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.6"
-            android:orientation="vertical"
             android:layout_marginLeft="10dp"
+            android:layout_weight="0.55"
+            android:orientation="vertical"
             android:weightSum="1">
 
             <me.grantland.widget.AutofitTextView
                 android:id="@+id/nombre_cuento"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.5"
-                android:textStyle="bold"
                 android:layout_marginTop="8dp"
-                android:textColor="@color/colorPrimary"
-                android:text="Ao ao rehegua"
+                android:layout_weight="0.5"
                 android:singleLine="true"
-                cardview:minTextSize="12sp"/>
+                android:text="Ao ao rehegua"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                cardview:minTextSize="12sp" />
 
             <me.grantland.widget.AutofitTextView
                 android:id="@+id/nombre_autor"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.5"
-                android:textColor="@color/secondaryText"
-                android:text="Domingo Adolfo Aguilera Jimenez"
                 android:singleLine="true"
-                cardview:minTextSize="12sp"/>
+                android:text="Domingo Adolfo Aguilera Jimenez"
+                android:textColor="@color/secondaryText"
+                cardview:minTextSize="12sp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.2"
-            android:orientation="vertical"
-            android:layout_marginLeft="10dp">
+            android:layout_marginLeft="10dp"
+            android:layout_weight="0.25"
+            android:orientation="horizontal"
+            android:weightSum="1">
 
-        <ImageButton
-            android:id="@+id/boton_download"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:background="@android:color/transparent"
-            android:src="@drawable/download"
-            />
-            </LinearLayout>
+            <ImageButton
+                android:id="@+id/boton_play"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.5"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_play_rojo" />
+
+            <ImageButton
+                android:layout_marginLeft="5dp"
+                android:id="@+id/boton_download"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.5"
+                android:background="@android:color/transparent"
+                android:src="@drawable/download" />
+        </LinearLayout>
 
 
 

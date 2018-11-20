@@ -271,6 +271,18 @@ public class AudiosActivity extends AppCompatActivity implements IAudio.View{
         presenter.stopAudio();
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        presenter.stopAudio();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        presenter.stopAudio();
+    }
+
     private void filtrarAudios(String text) {
 
         this.changeListAudio = false;

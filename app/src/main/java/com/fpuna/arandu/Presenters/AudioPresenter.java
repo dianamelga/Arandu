@@ -163,10 +163,8 @@ public class AudioPresenter implements IAudio.Presenter {
             super.onPostExecute(aVoid);
             view.hideProgressMessage();
             if(throwable != null) {
-                ErrorMessage errorMessage = new ErrorMessage();
-                view.showMessage("Hubo un error al tratar de reproducir el audio. "+errorMessage.get(throwable));
-                view.showPlay();
-                view.hidePause();
+                view.showMessage("Hubo un problema al tratar de reproducir el audio. ");
+                stopAudio();
                 return;
             }
 

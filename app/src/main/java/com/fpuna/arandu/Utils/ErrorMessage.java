@@ -12,18 +12,22 @@ public class ErrorMessage {
     public String get(Throwable throwable) {
         String mensaje = throwable.getMessage();
         if(throwable instanceof ConnectException ||
-                throwable.getMessage().contains("EHOSTUNREACH"))  {
-            mensaje = "Servidor no disponible.";
+                throwable instanceof  UnknownHostException  ||
+                throwable instanceof SSLException) {
+                if(throwable.getMessage() != null) {
+                    if (throwable.getMessage().contains("EHOSTUNREACH") ||
+                            throwable.getMessage().contains("Unable to resolve host")) {
+                        mensaje = "Servidor no disponible.";
+                    }
+                }
         }else if(throwable instanceof SocketTimeoutException)  {
             if (throwable.getMessage() != null) {
-                if (throwable.getMessage().contains("failed to connect to") ||
-                        throwable instanceof SSLException ||
-                        throwable instanceof UnknownHostException) {
+                if (throwable.getMessage().contains("failed to connect to")) {
                     mensaje = "Sin conexión.";
                 }
-            }else {
-                mensaje = "El servidor tardó mucho en responder.";
             }
+            mensaje = "El servidor tardó mucho en responder.";
+
         }else if(throwable instanceof SocketException) {
             if (throwable.getMessage() != null){
                 if (throwable.getMessage().contains("ECONNREFUSED") ||
