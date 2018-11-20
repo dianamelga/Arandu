@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.fpuna.arandu.Clases.Categoria;
+import com.fpuna.arandu.Clases.Constante;
 import com.fpuna.arandu.R;
 import com.fpuna.arandu.Views.AudiosActivity;
 import com.squareup.picasso.Picasso;
@@ -44,34 +45,17 @@ public class CategoriaAdapterRecyclerView extends RecyclerView.Adapter<Categoria
         //aca se trabaja con la lista de elementos, asignamos los datos al cardview
 
         categoria = categorias.get(position);
-        //Picasso.with(activity.getApplicationContext()).load(categoria.getImagen()).into(holder.imagenCategoria);
+        Picasso.get()
+                .load(Constante.urlService + "/"+ categorias.get(position).getImagen())
+                .resize(100, 100)
+                .centerCrop()
+                .into(holder.imagenCategoria);
+
         holder.labelCategoriaGuarani.setText(categoria.getNombreGuarani());
         holder.labelCategoriaCastellano.setText(categoria.getNombreCastellano());
 
-        int resourceImage = R.drawable.leyenda;
-        switch (categoria.getId()) {
-            case 1:
-                resourceImage = R.drawable.nino;
-                break;
-            case 2:
-                resourceImage = R.drawable.adulto;
-                break;
-            case 3:
-                resourceImage = R.drawable.mito;
-                break;
-            case 4:
-                resourceImage = R.drawable.leyenda;
-                break;
-            case 5:
-                resourceImage = R.drawable.poesia;
-                break;
-            case 6:
-                resourceImage = R.drawable.fabula;
-                break;
 
-        }
 
-        Picasso.with(activity.getApplicationContext()).load(resourceImage).into(holder.imagenCategoria);
 
         holder.imagenCategoria.setOnClickListener(new View.OnClickListener() {
 

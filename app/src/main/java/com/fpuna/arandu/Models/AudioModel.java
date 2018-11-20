@@ -81,7 +81,7 @@ public class AudioModel implements IAudio.Model {
             String url = fileInfo; // your URL here
             mediaPlayer = new MediaPlayer();
             mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-            mediaPlayer.setDataSource(url);
+            mediaPlayer.setDataSource(Constante.urlService + "/"+url);
             mediaPlayer.prepare(); // might take long! (for buffering, etc)
             mediaPlayer.start();
         }else{

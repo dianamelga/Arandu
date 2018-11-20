@@ -52,7 +52,9 @@ public class CuentoAdapterRecyclerView extends RecyclerView.Adapter<CuentoAdapte
             public void onClick(View v) {
 
                 audio = audios.get(position);
+                presenter.stopAudio();
                 presenter.showReproductor(audio);
+                presenter.playAudio(audios.get(position).getUrlAudio());
 
             }
         });
@@ -75,7 +77,7 @@ public class CuentoAdapterRecyclerView extends RecyclerView.Adapter<CuentoAdapte
 
     public class CuentoViewHolder extends RecyclerView.ViewHolder {
 
-        private LinearLayout cuento;
+        private View cuento;
         private TextView nombreCuento;
         private TextView autorCuento;
         private ImageButton botonDownload;
@@ -83,7 +85,7 @@ public class CuentoAdapterRecyclerView extends RecyclerView.Adapter<CuentoAdapte
         public CuentoViewHolder(final View itemView) {
             super(itemView);
 
-            cuento = (LinearLayout) itemView.findViewById(R.id.audio);
+            cuento = itemView;
             nombreCuento = (TextView) itemView.findViewById(R.id.nombre_cuento);
             autorCuento = (TextView) itemView.findViewById(R.id.nombre_autor);
             botonDownload = (ImageButton) itemView.findViewById(R.id.boton_download);
