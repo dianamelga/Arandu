@@ -41,8 +41,8 @@ public class AudioPresenter implements IAudio.Presenter {
 
 
     @Override
-    public void descargarAudio(String urlAudio) {
-        AsyncDescarga asyncDescarga = new AsyncDescarga(urlAudio);
+    public void descargarAudio(Audio audio) {
+        AsyncDescarga asyncDescarga = new AsyncDescarga(audio);
         asyncDescarga.execute();
     }
 
@@ -93,11 +93,11 @@ public class AudioPresenter implements IAudio.Presenter {
 
     public class AsyncDescarga extends AsyncTask<Void, Void, Void>{
 
-        private String urlAudio;
+        private Audio audio;
         private Throwable throwable;
 
-        public AsyncDescarga(String urlAudio) {
-            this.urlAudio = urlAudio;
+        public AsyncDescarga(Audio audio) {
+            this.audio = audio;
         }
 
         @Override
@@ -109,7 +109,7 @@ public class AudioPresenter implements IAudio.Presenter {
         @Override
         protected Void doInBackground(Void... voids) {
             try {
-                model.descargarAudio();
+                model.descargarAudio(audio);
             } catch (Exception e) {
                 e.printStackTrace();
                 throwable = e;

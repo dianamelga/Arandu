@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public interface IAudio {
 
     public interface Model extends IModel {
-        public void descargarAudio() throws Exception;
+        public void descargarAudio(Audio audio) throws Exception;
         public void playAudio(String urlAudio) throws Exception;
         public void pauseAudio() throws Exception;
         public void stopAudio() throws Exception;
@@ -43,7 +43,7 @@ public interface IAudio {
         public void loadView();
         public void showReproductor(Audio audio);
 
-        public void descargarAudio(String urlAudio);
+        public void descargarAudio(Audio audio);
         public void playAudio(String urlAudio);
         public void pauseAudio();
         public void stopAudio();

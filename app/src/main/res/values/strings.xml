@@ -13,5 +13,14 @@
     <string name="siguiente">Ehasa</string>
     <string name="volver">Ejevy</string>
     <string name="finalizar">opa</string>
+    <string name="nombre_fpuna">Facultad Politécnica (UNA)</string>
+    <string name="direccion_fpuna">Facultad Politécnica</string>
+    <string name="direccion_fpuna_2">Campus, San Lorenzo - Paraguay</string>
+    <string name="telefono_fpuna">Tel.: (021)588 7000 - CC 2111</string>
+    <string name="link_fpuna">www.pol.una.py</string>
+    <string name="nombre_ggg">Grupo de Grabaciones en Guaraní</string>
+    <string name="direccion_ggg">De las Palmeras 4331</string>
+    <string name="telefono_ggg">Tel.: (0981) 317755</string>
+    <string name="link_ggg">ggg.audiobibliadata.com</string>
 
 </resources>

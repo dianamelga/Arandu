@@ -33,6 +33,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
             android:src="@drawable/leyenda"
+            android:scaleType="centerCrop"
             />
 
 

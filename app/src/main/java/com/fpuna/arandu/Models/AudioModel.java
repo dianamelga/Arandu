@@ -8,11 +8,13 @@ import android.os.Environment;
 import android.util.Log;
 
 import com.bumptech.glide.load.data.HttpUrlFetcher;
+import com.fpuna.arandu.Clases.Audio;
 import com.fpuna.arandu.Clases.Constante;
 import com.fpuna.arandu.Interfaces.IAudio;
 import com.fpuna.arandu.R;
 
 import java.io.BufferedInputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -26,13 +28,15 @@ public class AudioModel implements IAudio.Model {
     private MediaPlayer mediaPlayer;
     private int currentPosition;
 
+
     @Override
-    public void descargarAudio() throws Exception {
+    public void descargarAudio(Audio audio) throws Exception {
 
         //descarga el audio y lo almacena en carpeta de descargas
         //throw new Exception("Error hecho a propósito...");
 
-        URL url = new URL(Constante.urlService+"/api/audiobyte/1");//probando
+        Log.d("debug", "urlAudio");
+        URL url = new URL(Constante.urlService+"/"+audio.getUrlAudio());
         HttpURLConnection myConnection = (HttpURLConnection) url.openConnection();
         myConnection.setRequestProperty("Accept","application/json");
         myConnection.setRequestMethod("GET");
@@ -45,9 +49,22 @@ public class AudioModel implements IAudio.Model {
             int lenghtOfFile = myConnection.getContentLength();
 
             InputStream input = new BufferedInputStream(url.openStream());
-            Log.d("debug", "path: "+ Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS));
-            OutputStream output = new FileOutputStream(
-                    Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)+"/audio_1.mp3");
+
+
+            File audioFile = null;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
+                // Do something for lollipop and above versions
+                File storageDir = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS);
+                audioFile = File.createTempFile("audio_"+audio.getId(), ".mp3", storageDir);
+            } else{
+                // do something for phones running an SDK before lollipop
+                audioFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+                        +"/audio_"+audio.getId()+".mp3");
+
+            }
+
+            Log.d("debug", audioFile.getAbsolutePath());
+            OutputStream output = new FileOutputStream(audioFile.getAbsolutePath());
 
             byte data[] = new byte[1024];
             long total = 0;
@@ -78,10 +95,10 @@ public class AudioModel implements IAudio.Model {
         //recibe el url del audio para reproducir
 
         if(mediaPlayer == null) {
-            String url = fileInfo; // your URL here
+            String url = Constante.urlService + "/"+fileInfo; // your URL here
             mediaPlayer = new MediaPlayer();
             mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-            mediaPlayer.setDataSource(Constante.urlService + "/"+url);
+            mediaPlayer.setDataSource(url);
             mediaPlayer.prepare(); // might take long! (for buffering, etc)
             mediaPlayer.start();
         }else{
@@ -93,9 +110,11 @@ public class AudioModel implements IAudio.Model {
     public void pauseAudio() throws Exception{
         //pausa el audio que se esta reproduciendo
 
-        if(mediaPlayer.isPlaying()){
-            mediaPlayer.pause();
-            currentPosition = mediaPlayer.getCurrentPosition();
+        if(mediaPlayer != null) {
+            if (mediaPlayer.isPlaying()) {
+                mediaPlayer.pause();
+                currentPosition = mediaPlayer.getCurrentPosition();
+            }
         }
 
     }

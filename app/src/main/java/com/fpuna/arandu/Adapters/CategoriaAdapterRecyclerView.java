@@ -47,8 +47,6 @@ public class CategoriaAdapterRecyclerView extends RecyclerView.Adapter<Categoria
         categoria = categorias.get(position);
         Picasso.get()
                 .load(Constante.urlService + "/"+ categorias.get(position).getImagen())
-                .resize(100, 100)
-                .centerCrop()
                 .into(holder.imagenCategoria);
 
         holder.labelCategoriaGuarani.setText(categoria.getNombreGuarani());

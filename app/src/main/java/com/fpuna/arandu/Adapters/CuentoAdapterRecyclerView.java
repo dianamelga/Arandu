@@ -64,9 +64,11 @@ public class CuentoAdapterRecyclerView extends RecyclerView.Adapter<CuentoAdapte
             public void onClick(View v) {
                 //descarga de audio
                 audio = audios.get(position);
-                presenter.descargarAudio(audio.getUrlAudio());
+                presenter.descargarAudio(audio);
             }
         });
+
+        //holder.botonDownload.setVisibility(View.INVISIBLE);
 
     }
 

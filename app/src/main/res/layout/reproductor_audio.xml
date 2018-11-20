@@ -36,7 +36,6 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:fontFamily="casual"
             android:maxLines="1"
             android:singleLine="true"
             android:text="Mombe'u yma"
