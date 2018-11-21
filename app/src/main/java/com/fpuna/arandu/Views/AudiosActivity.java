@@ -268,18 +268,21 @@ public class AudiosActivity extends AppCompatActivity implements IAudio.View{
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        Log.d("debug", "onDestroy");
         presenter.stopAudio();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
+        Log.d("debug", "onStop");
         presenter.stopAudio();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        Log.d("debug", "onPause");
         presenter.stopAudio();
     }
 
