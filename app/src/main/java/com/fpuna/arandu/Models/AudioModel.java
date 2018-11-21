@@ -54,7 +54,7 @@ public class AudioModel implements IAudio.Model {
             File audioFile = null;
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
                 // Do something for lollipop and above versions
-                File storageDir = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS);
+                File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
                 audioFile = File.createTempFile("audio_"+audio.getId(), ".mp3", storageDir);
             } else{
                 // do something for phones running an SDK before lollipop
