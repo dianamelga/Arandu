@@ -47,7 +47,8 @@ public class MainActivity extends AppCompatActivity implements IMain.View,  Step
     private StepperLayout mStepperLayout;
     private String[] permissions = new String[]{
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.READ_EXTERNAL_STORAGE
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WAKE_LOCK
     };
     public static final int MULTIPLE_PERMISSIONS = 107;
 
