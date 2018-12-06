@@ -103,24 +103,30 @@ public class AudioModel implements IAudio.Model {
             mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
             mediaPlayer.setDataSource(url);
 
-            /* algunos dispositivos para ahorrar bateria, matan los servicios que no son "importantes",
-            * de esta manera, evitamos que eso suceda
-            */
-            mediaPlayer.setWakeMode(context.getApplicationContext(), PowerManager.PARTIAL_WAKE_LOCK);
 
-            mediaPlayer.prepare(); // might take long! (for buffering, etc)
-            mediaPlayer.start();
 
-            /* lo mismo para el wifi, en caso de que el celular detenga el servicio para ahorrar batería,
-            *  si ocurre una excepcion no pasa nada.
-             */
             try {
+                /* algunos dispositivos para ahorrar bateria, matan los servicios que no son "importantes",
+                 * de esta manera, evitamos que eso suceda
+                 */
+                mediaPlayer.setWakeMode(context.getApplicationContext(), PowerManager.PARTIAL_WAKE_LOCK);
+
+                /* lo mismo para el wifi, en caso de que el celular detenga el servicio para ahorrar batería,
+                 *  si ocurre una excepcion no pasa nada.
+                 */
                 wifiLock = ((WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE))
                         .createWifiLock(WifiManager.WIFI_MODE_FULL, "mylock");
+
             }catch (Exception e) {
                 e.printStackTrace();
                 //nada
             }
+
+
+            mediaPlayer.prepare(); // might take long! (for buffering, etc)
+            mediaPlayer.start();
+
+
         }else{
             this.resumeOnPosition(currentPosition);
         }
@@ -142,9 +148,14 @@ public class AudioModel implements IAudio.Model {
     @Override
     public void stopAudio() throws Exception {
 
-        if(wifiLock != null)
-            wifiLock.release();
-
+        try {
+            if (wifiLock != null)
+                if(wifiLock.isHeld())
+                    wifiLock.release();
+        }catch (Exception e) {
+            e.printStackTrace();
+            //nada
+        }
         if (mediaPlayer != null) {
             mediaPlayer.stop();
             mediaPlayer.release();
@@ -154,9 +165,14 @@ public class AudioModel implements IAudio.Model {
 
     @Override
     public void resumeOnPosition(int position) throws Exception {
-
-        if(wifiLock != null)
-            wifiLock.release();
+        try {
+            if (wifiLock != null)
+                if(wifiLock.isHeld())
+                    wifiLock.release();
+        }catch (Exception e) {
+            e.printStackTrace();
+            //nada
+        }
 
         if(mediaPlayer != null) {
             this.pauseAudio();
